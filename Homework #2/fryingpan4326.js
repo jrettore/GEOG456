@@ -1,0 +1,8 @@
+var fryingpan = {
+"type": "FeatureCollection",
+"name": "fryingpan4326",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "location": "Fryingpan", "x": 35.3933, "y": -82.7744 }, "geometry": { "type": "Point", "coordinates": [ 35.3933, -82.7744 ] } }
+]
+}
