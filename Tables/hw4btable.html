@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  
+table {
+  font-family:'Times New Roman', Times, serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid lightskyblue;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: lightskyblue;
+}
+
+</style>
+</head>
+<script src="./carolinas_bird_collection.js"></script>
+<body>
+  <h1>U.S. Geological Survey North American Breeding Bird Survey Collection Site Locations in the Carolinas 1966-2023</h1>
+<table id="bird_collection">
+        <tr>
+          <th>State</th>
+          <th>Station</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+        </tr>
+</table>
+<script>
+    var x = document.getElementById('bird_collection') // assigning a variable to element of document
+  
+  for (var i =0; i <data.features.length; i++){
+    var myNewRow = document.createElement('tr');
+    var myNewCell1 = document.createElement('td');
+    var myNewCell2 = document.createElement('td');
+    var myNewCell3 = document.createElement('td');
+    var myNewCell4 = document.createElement('td');
+
+var stateNumber = data.features[i].properties.StateNum
+    if (stateNumber == 63){
+      stateNumber = "North Carolina"
+    }
+    if (stateNumber == 80){
+      stateNumber = "South Carolina"
+    }
+
+    myNewCell1.innerHTML = stateNumber; 
+    myNewCell2.innerHTML = data.features[i].properties.RouteName;
+    myNewCell3.innerHTML = data.features[i].properties.Latitude;
+    myNewCell4.innerHTML = data.features[i].properties.Longitude;
+
+
+    myNewRow.append(myNewCell1);
+    myNewRow.append(myNewCell2);
+    myNewRow.append(myNewCell3);
+    myNewRow.append(myNewCell4);
+    x.append(myNewRow);
+
+  }
+</script>
+</body>
+</html>
+
