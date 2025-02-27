@@ -20,12 +20,15 @@
     }
     h1{
         color: black;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
     }
     h2{
         color: black;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
     }
     h3{
         color: black;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
     }
     #map{ 
         width: 100%;
@@ -34,9 +37,9 @@
 </style>
 <body>
     <h1>First Adult Monarch Butterfly Sightings</h1>
-    <h2>Contiguous United States, June 1-7, 2018</h2>
-    <h3 id ="daYear">Day</h3>
-    <input id="dateSlider" type = "range" name = "Day" min = "0" max = "120" oninput="moveSlider(this.value)">
+    <h2>Contiguous United States, June 2018</h2>
+    <h3 id ="Year">Day</h3>
+    <input id="dateSlider" type = "range" name = "Day" min = "0" max = "408" oninput="moveSlider(this.value)">
     <div id="map"></div>
     <script>
 
@@ -64,7 +67,7 @@
         function moveSlider(value) { // function called by the slider that uses the value to select one feature, using the index of the feature array. 
     
             currentValue = value
-            document.getElementById('daYear').innerHTML = 'Day ' + monarch.features[value].properties.date
+            document.getElementById('Year').innerHTML = 'Day ' + monarch.features[value].properties.date
             geojson = L.geoJson(monarch.features[value],{
                 pointToLayer: function(feature,latlng){
                     return L.marker(latlng,{icon: orangeIcon})
