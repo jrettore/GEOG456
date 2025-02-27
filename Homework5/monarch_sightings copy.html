@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+
+   <script src="monarch_sightings.js"></script>
+</head>
+<style>
+    body{
+        background-color: blanchedalmond;
+    }
+    h1{
+        color: black;
+    }
+    h2{
+        color: black;
+    }
+    h3{
+        color: black;
+    }
+    #map{ 
+        width: 100%;
+        height: 500px;
+         }
+</style>
+<body>
+    <h1>First Adult Monarch Butterfly Sightings</h1>
+    <h2>Contiguous United States, June 1-7, 2018</h2>
+    <h3 id ="daYear">Day</h3>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      </div>
+    <div id="map"></div>
+    <script>
+
+        var map = L.map('map').setView([40, -99], 4.2);
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        var LeafIcon = L.Icon.extend({
+            options: {
+                iconSize:     [80, 48],
+                iconAnchor:   [40, 22],
+            }
+        })
+
+        var orangeIcon = new LeafIcon({iconUrl: 'monarch.png'}) // creates icon for each value
+
+        var geojson = L.geoJson(monarch.features[0],{
+            pointToLayer: function(feature,latlng){ // places icon according to location
+                return L.marker(latlng,{icon: orangeIcon})
+            }
+        }).addTo(map);
+
+        function moveSlider(value) { // function called by the slider that uses the value to select one feature, using the index of the feature array. 
+    
+            currentValue = value
+            document.getElementById('daYear').innerHTML = 'Day ' + monarch.features[value].properties.date
+            geojson = L.geoJson(monarch.features[value],{
+                pointToLayer: function(feature,latlng){
+                    return L.marker(latlng,{icon: orangeIcon})
+                }
+            })
+            map.addLayer(geojson);
+            
+        }
+        moveSlider(0) // resets slider upon refresh
+        window.onload = function() { // means "once window loads, do this.."
+        document.getElementById('dateSlider').value = 0;  
+    };
+
+    </script>
+    <h3>Jonah Ettore</h3>
+</body>
+<div>Data Source: <a href="https://www.journeynorth.org/" title="Journey North">Journey North</a></div>
+<div>Image Source: <a href="https://www.pngall.com/" title="PNG All">PNG All</a></div>
+
+    
+</html>

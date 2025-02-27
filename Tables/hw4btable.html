@@ -2,7 +2,7 @@
 <html>
 <head>
 <style>
-  
+
 table {
   font-family:'Times New Roman', Times, serif;
   border-collapse: collapse;
@@ -41,6 +41,7 @@ tr:nth-child(even) {
     var myNewCell4 = document.createElement('td');
 
 var stateNumber = data.features[i].properties.StateNum
+
     if (stateNumber == 63){
       stateNumber = "North Carolina"
     }
@@ -65,3 +66,9 @@ var stateNumber = data.features[i].properties.StateNum
 </body>
 </html>
 
+changes characters into array :
+myYear = aDate.split('-')[1] myDay = aDate.split('-')
+myTextArray = aDate.split('') combines
+
+- no more than 6 digits in the lat, long and must be in ESPG 4326 because it's in lat,long
+- mapshaper.com simplifies polygons (reduce amount of vertices)

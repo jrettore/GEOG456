@@ -1,0 +1,408 @@
+﻿date,location,state,lat,long,numb
+6/1/18,Phillips,WI,45.7,-90.4,2
+6/1/18,Minneapolis,MN,44.9,-93.2,1
+6/1/18,Shirley,NY,40.8,-72.9,1
+6/1/18,Bayville,NY,40.9,-73.6,1
+6/1/18,Bath Township,MI,42.8,-84.4,2
+6/1/18,Shinnston,WV,39.4,-80.3,1
+6/1/18,Britton,SD,45.8,-97.7,1
+6/1/18,Sudbury,ON,46.5,-81,1
+6/1/18,Derby,KS,37.5,-97.3,1
+6/1/18,Escalon,CA,37.8,-121,1
+6/1/18,Du Quoin,IL,38,-89.2,1
+6/1/18,Britton,SD,45.8,-97.7,1
+6/1/18,Pagosa Springs,CO,37.3,-107,1
+6/1/18,Grayslake,IL,42.3,-88,1
+6/1/18,Velarde,NM,36.2,-106,1
+6/1/18,Wausau,WI,45,-89.6,1
+6/1/18,Herman,MN,45.8,-96.2,2
+6/1/18,River Falls,WI,44.9,-92.5,1
+6/1/18,Oakland,NE,41.8,-96.5,1
+6/1/18,Bete Grise,MI,47.4,-87.9,1
+6/1/18,Tillsonburg,ON,42.9,-80.8,1
+6/1/18,Saint Michael,MN,45.2,-93.7,1
+6/1/18,St. Michael / Hanover,MN,45.2,-93.7,1
+6/1/18,Stafford,VA,38.4,-77.4,1
+6/1/18,Douglas,MI,42.6,-86.2,1
+6/1/18,Warren,MI,42.5,-83,1
+6/1/18,Barrie,ON,44.5,-79.7,1
+6/1/18,Media,PA,39.9,-75.4,1
+6/1/18,Fertile,MN,47.6,-96.2,3
+6/1/18,Berwyn,IL,41.9,-87.8,1
+6/1/18,Mars Hill,NC,35.9,-82.5,2
+6/1/18,Overland Park,KS,38.9,-94.7,1
+6/1/18,Ripon,WI,43.9,-88.9,2
+6/1/18,Winneconne,WI,44.1,-88.7,1
+6/1/18,San Luis Obispo,CA,35.2,-120.7,2
+6/1/18,Philadelphia,PA,40,-75.1,1
+6/1/18,North Platte,NE,41.1,-100.8,1
+6/1/18,Asheville,NC,35.6,-82.5,1
+6/2/18,Belchertown,MA,42.4,-72.4,1
+6/2/18,Newburgh,IN,37.9,-87.4,1
+6/2/18,Severn Bridge,ON,44.8,-79.4,1
+6/2/18,Hastings,ON,44.3,-78,1
+6/2/18,Ephrata,PA,40.2,-76.2,1
+6/2/18,Wilton,NH,42.8,-71.7,1
+6/2/18,Richards Landing,ON,46.3,-84.1,1
+6/2/18,Vero Beach,FL,27.7,-80.5,2
+6/2/18,Mount Vernon,IA,41.9,-91.4,1
+6/2/18,Ottawa,ON,45.4,-75.8,1
+6/2/18,Marquette,MI,46.5,-87.4,3
+6/2/18,Santaquin,UT,40,-111.8,1
+6/2/18,Elliot Lake,ON,46.4,-82.7,1
+6/2/18,Oak Lawn,IL,41.7,-87.7,1
+6/2/18,Pataskala,OH,40,-82.7,1
+6/2/18,Rocky Point,NY,41,-72.9,1
+6/2/18,Swannanoa,NC,35.6,-82.4,1
+6/2/18,Carson,WA,45.7,-121.8,1
+6/2/18,Sudbury,ON,46.5,-80.9,1
+6/2/18,Midlothian,VA,37.4,-77.7,1
+6/2/18,Eaton,OH,39.8,-84.6,1
+6/2/18,Port Chester,NY,41,-73.7,1
+6/2/18,Buffalo Grove,IL,42.2,-88,1
+6/2/18,Stevensville,MD,39,-76.3,1
+6/2/18,Union,ON,42.7,-81.2,1
+6/2/18,Hamilton,ON,43.3,-80,1
+6/2/18,Hayden,ID,47.8,-116.8,3
+6/3/18,Windsor Locks,CT,41.9,-72.6,2
+6/3/18,OFallon,MO,38.8,-90.7,1
+6/3/18,Atlanta,GA,33.8,-84.3,1
+6/3/18,Omaha,NE,41.2,-96.1,1
+6/3/18,Salina,KS,38.8,-97.6,2
+6/3/18,Tulsa,OK,36.1,-95.9,1
+6/3/18,Fort Pierre,SD,44.4,-100.4,1
+6/3/18,Lyons,NE,42,-96.5,3
+6/3/18,Sanford,MI,43.7,-84.4,1
+6/3/18,Burns,OR,43.6,-119.1,1
+6/3/18,Chelsea,QC,45.5,-75.8,1
+6/3/18,Guthrie,OK,35.9,-97.4,1
+6/3/18,Sandwich,MA,41.8,-70.5,1
+6/3/18,Seattle,WA,47.6,-122.3,1
+6/3/18,Tupper Lake,NY,44.2,-74.5,1
+6/3/18,Dearborn Heights,MI,42.3,-83.3,2
+6/3/18,Sparta,WI,43.9,-90.9,4
+6/3/18,Vita,MB,49.1,-96.6,2
+6/4/18,Harris,MN,45.6,-93,1
+6/4/18,Kamiah,ID,46.2,-116,1
+6/4/18,Saint Paul,MN,44.9,-93.1,1
+6/4/18,Cape Coral,FL,26.7,-82,1
+6/4/18,Kenora,ON,49.8,-94.4,1
+6/4/18,Duluth,MN,46.8,-92.1,2
+6/4/18,Minneapolis,MN,45,-93.2,1
+6/4/18,Grand Island,NE,40.9,-98.4,1
+6/4/18,Duluth,MN,46.9,-92,1
+6/5/18,Fredericktown,MO,37.6,-90.2,1
+6/5/18,Shilo,MB,49.7,-99.9,1
+6/5/18,Iowa City,IA,41.6,-91.5,1
+6/5/18,Reston,VA,38.9,-77.3,1
+6/5/18,Norwich,VT,43.7,-72.4,1
+6/5/18,Cincinnati,OH,39.1,-84.4,1
+6/5/18,Brookings,SD,44.3,-96.8,1
+6/5/18,Exeland,WI,45.7,-91.4,2
+6/5/18,Savannah,NY,43,-76.8,2
+6/6/18,Hockessin,DE,39.8,-75.7,1
+6/6/18,Parry Sound,ON,45.4,-80,1
+6/6/18,Dover,PA,40.1,-76.8,1
+6/6/18,Winnipeg,MB,49.9,-97.1,1
+6/6/18,Winnipeg,MB,49.9,-97.1,1
+6/6/18,London,ON,43,-81.2,1
+6/6/18,Midvale,UT,40.6,-111.9,1
+6/6/18,Kimball,NE,41.2,-103.6,1
+6/6/18,Belmont,MI,43.1,-85.5,1
+6/6/18,Burlington,ON,43.3,-79.8,1
+6/6/18,Broomfield,CO,39.9,-105.1,1
+6/6/18,Port Alberni,BC,49.2,-124.8,2
+6/6/18,Paducah,KY,37.1,-88.7,1
+6/6/18,Lincroft,NJ,40.3,-74.1,1
+6/6/18,Hillsboro,MO,38.2,-90.6,1
+6/6/18,Washington,NJ,40.8,-75,1
+6/6/18,Lafayette Township,NJ,41.1,-74.7,1
+6/6/18,Toronto,ON,43.6,-79.6,1
+6/7/18,Jamestown,OH,39.7,-83.7,1
+6/7/18,London,ON,43,-81.3,1
+6/7/18,Falls Church,VA,38.9,-77.2,1
+6/7/18,Coon Rapids,MN,45.2,-93.3,1
+6/7/18,Lockport,NY,43.2,-78.8,1
+6/7/18,Fort Gratiot Township,MI,43.1,-82.5,1
+6/7/18,Stonington,CT,41.3,-71.9,1
+6/7/18,Ile des ChÃªnes,MB,49.7,-97,1
+6/7/18,Seneca Falls,NY,43,-76.7,5
+6/8/18,Frankfort,IN,40.3,-86.5,1
+6/8/18,Horton Bay,MI,45.3,-85.1,1
+6/8/18,Waubaushene,ON,44.8,-79.7,1
+6/8/18,Akron,OH,41.1,-81.6,1
+6/8/18,Winnipeg,MB,49.9,-97,1
+6/8/18,Monclova,OH,41.5,-83.7,1
+6/8/18,Harcourt,ON,45.1,-78,1
+6/8/18,Winnipeg,MB,49.9,-97.3,1
+6/8/18,Antelope,OR,44.9,-120.5,1
+6/8/18,Macomb,MI,42.7,-82.9,1
+6/8/18,Anola,MB,49.9,-96.7,2
+6/8/18,Burlington,ON,43.3,-79.8,1
+6/8/18,Toronto,ON,43.7,-79.3,1
+6/8/18,Wells,NY,43.4,-74.3,1
+6/8/18,Delhi charter Township,MI,42.6,-84.5,2
+6/8/18,Lakeshore,ON,42.3,-82.8,1
+6/8/18,North Ridgeville,OH,41.4,-82,1
+6/9/18,McCordsville,IN,39.9,-85.9,1
+6/9/18,Easton,PA,40.7,-75.2,1
+6/9/18,Stone Creek,OH,40.4,-81.7,1
+6/9/18,Toronto,ON,43.7,-79.4,1
+6/9/18,Tantallon,SK,50.5,-101.8,1
+6/9/18,Fergus Falls,MN,46.3,-96.1,1
+6/9/18,Bracebridge,ON,45,-79.3,2
+6/9/18,Cartwright,MB,49.1,-99.3,2
+6/9/18,Hardwick,MA,42.3,-72.2,1
+6/9/18,Brownsville,IN,39.7,-85,2
+6/9/18,Muncy,PA,41.3,-76.9,1
+6/9/18,Coudersport,PA,41.8,-78,1
+6/10/18,Rhein,SK,51.4,-102.2,1
+6/10/18,Toronto,ON,43.6,-79.5,2
+6/10/18,Lumsden,SK,50.6,-104.9,1
+6/10/18,Lexington,KY,38.1,-84.4,1
+6/10/18,Carleton Place,ON,45.2,-76.2,1
+6/10/18,Elizabeth,CO,39.3,-104.6,1
+6/10/18,Loveland,OH,39.3,-84.3,1
+6/10/18,Gering,NE,41.7,-103.7,1
+6/10/18,St. Catharines,ON,43.2,-79.2,1
+6/10/18,Farmington,MN,44.6,-93.1,4
+6/10/18,Easthampton,MA,42.2,-72.7,1
+6/10/18,Ottawa,ON,45.3,-75.6,1
+6/10/18,Renick,WV,38,-80.3,2
+6/10/18,Sperryville,VA,38.7,-78.2,1
+6/10/18,Winnipeg,MB,49.9,-97.3,1
+6/11/18,Burlington,ON,43.3,-79.8,1
+6/11/18,Delphi,IN,40.6,-86.7,1
+6/11/18,Sterling Heights,MI,42.6,-83,1
+6/11/18,Verona,MI,43.8,-83,4
+6/11/18,Burlington,ON,43.3,-79.9,1
+6/11/18,Aumsville,OR,44.8,-122.9,1
+6/12/18,York,PA,40,-76.7,1
+6/12/18,Omaha,NE,41.3,-95.9,1
+6/12/18,Salem,OR,44.9,-122.9,1
+6/12/18,North Charleston,SC,32.9,-80,1
+6/12/18,Corvallis,OR,44.6,-123.3,1
+6/12/18,Brantford,ON,43.1,-80.3,1
+6/12/18,Dover,DE,39.1,-75.5,1
+6/12/18,Port Byron,NY,43,-76.7,2
+6/12/18,Seneca Falls,NY,43,-76.7,1
+6/12/18,Seneca Falls,NY,43,-76.8,2
+6/12/18,Mount Joy,PA,40.1,-76.5,1
+6/12/18,Villa Park,IL,41.9,-88,1
+6/12/18,Mount Airy,MD,39.4,-77.1,1
+6/12/18,Morrisville,PA,40.2,-74.8,1
+6/13/18,Iowa City,IA,41.6,-91.6,1
+6/13/18,Columbus,OH,40.1,-83,1
+6/13/18,Lombard,IL,41.9,-88,1
+6/13/18,Davisburg,MI,42.8,-83.5,1
+6/13/18,Bellevue,NE,41.1,-96,1
+6/13/18,Mequon,WI,43.2,-87.9,4
+6/13/18,Evanston,IL,42,-87.7,1
+6/13/18,Winnipeg,MB,49.9,-97.2,1
+6/13/18,Benson,AZ,32,-110.3,1
+6/13/18,Newark,NY,43,-77.1,1
+6/14/18,Manchester,MI,42.2,-83.9,1
+6/14/18,Bridgeport,CT,41.2,-73.2,1
+6/14/18,Worthington,OH,40.1,-83,1
+6/14/18,Afton,NY,42.2,-75.5,1
+6/14/18,Plainview,NY,40.8,-73.5,1
+6/14/18,Chicago,IL,41.9,-87.7,1
+6/14/18,Chadds Ford,PA,39.9,-75.6,1
+6/15/18,Chatham-Kent,ON,42.4,-82.2,1
+6/15/18,Madison,WI,43.1,-89.4,2
+6/15/18,Washington,DC,39,-77.1,5
+6/15/18,Fairhaven,MA,41.6,-70.9,1
+6/15/18,Grand Ledge,MI,42.7,-84.7,1
+6/15/18,Sauk Village,IL,41.5,-87.6,1
+6/15/18,San Antonio,TX,29.5,-98.5,1
+6/16/18,Gravenhurst,ON,44.9,-79.3,1
+6/16/18,Dallas,PA,41.3,-76,1
+6/16/18,Afton,NY,42.2,-75.5,1
+6/16/18,Hancock,ME,44.5,-68.3,1
+6/16/18,Mount Joy,PA,40.1,-76.5,1
+6/16/18,Toronto,ON,43.6,-79.5,2
+6/16/18,Broomfield,CO,39.9,-105.1,1
+6/16/18,Detroit,MI,42.3,-83,3
+6/16/18,Upper Freehold,NJ,40.1,-74.5,1
+6/16/18,Bognor,ON,44.5,-80.8,1
+6/16/18,Bloomfield,NE,42.7,-97.7,1
+6/16/18,Warwick,NY,41.3,-74.4,5
+6/16/18,Oakville,ON,43.4,-79.8,2
+6/16/18,Jordan,NY,43.1,-76.5,1
+6/16/18,Perras,QC,46.1,-76.1,1
+6/16/18,Silver Springs,NY,42.7,-78,2
+6/17/18,Brantford,ON,43.1,-80.3,1
+6/17/18,Langdon,NH,43.2,-72.3,1
+6/17/18,Winnipeg,MB,49.9,-97.1,1
+6/17/18,Wernersville,PA,40.3,-76.1,1
+6/17/18,Brockport,NY,43.2,-77.9,1
+6/17/18,Sister Bay,WI,45.2,-87.1,1
+6/17/18,Hackensack,NJ,40.9,-74,1
+6/17/18,Danville,KY,37.6,-84.8,1
+6/17/18,Langdon,NH,43.2,-72.3,1
+6/17/18,Herkimer,NY,43,-75,1
+6/17/18,Montebello,QC,45.7,-74.9,1
+6/17/18,Moline,IL,41.5,-90.5,2
+6/17/18,Brockport,NY,43.2,-77.9,1
+6/17/18,Mount Laurel,NJ,39.9,-74.9,1
+6/18/18,Manhattan,KS,39.2,-96.6,5
+6/18/18,Erie,PA,42.1,-80.1,1
+6/18/18,Rock Island,IL,41.5,-90.6,1
+6/18/18,Northfield,NH,43.4,-71.6,1
+6/18/18,Canton,OH,40.8,-81.4,1
+6/18/18,Crown Point,IN,41.4,-87.3,1
+6/18/18,Lewisburg,PA,40.9,-77,1
+6/18/18,Thunder Bay,ON,48.5,-89.1,2
+6/18/18,Logan,UT,41.7,-111.8,1
+6/18/18,East Falmouth,MA,41.6,-70.5,1
+6/18/18,Indian Lake,NY,43.8,-74.3,1
+6/18/18,Anderson,CA,40.4,-122.1,1
+6/18/18,Broken Arrow,OK,36,-95.8,1
+6/18/18,New Haven,KY,37.7,-85.5,1
+6/18/18,Sinclairville,NY,42.3,-79.3,5
+6/18/18,Lambton Shores,ON,43.3,-81.8,1
+6/18/18,Fairfield,NJ,40.9,-74.3,1
+6/19/18,Fairfax,VA,38.8,-77.3,1
+6/19/18,Dearborn Heights,MI,42.3,-83.3,1
+6/19/18,Spring Lake,NJ,40.2,-74,1
+6/19/18,Cattaraugus,NY,42.3,-78.9,1
+6/19/18,Rothesay,NB,45.4,-66,1
+6/19/18,Ames,NE,41.5,-96.6,1
+6/19/18,Bayside,NY,40.8,-73.8,1
+6/19/18,Frankfort,KY,38.2,-84.8,1
+6/19/18,Rothesay,NB,45.4,-66,1
+6/19/18,Chamcook,NB,45.1,-67.1,1
+6/19/18,Delancey,NY,42.2,-75,1
+6/19/18,Norwich,VT,43.7,-72.3,1
+6/19/18,Harpswell,ME,43.8,-70,2
+6/19/18,Lancaster,PA,40,-76.3,1
+6/19/18,Williamstown,WV,39.4,-81.4,1
+6/19/18,Savannah,NY,43,-76.7,1
+6/19/18,Hunts Point,NS,44,-64.7,1
+6/20/18,Chesterville,ME,44.5,-70.1,1
+6/20/18,Vancouver,WA,45.7,-122.5,2
+6/20/18,Red Bank,NJ,40.3,-74.1,1
+6/20/18,Cato,NY,43.2,-76.6,1
+6/20/18,Hackensack,NJ,40.9,-74,1
+6/20/18,Naperville,IL,41.8,-88.2,1
+6/20/18,Pond Creek,OK,36.7,-97.8,1
+6/20/18,Medford,OR,42.4,-122.8,2
+6/20/18,Northbridge,MA,42.2,-71.6,1
+6/20/18,Oconomowoc,WI,43.1,-88.5,1
+6/20/18,Howell,MI,42.7,-83.9,1
+6/20/18,Winston-Salem,NC,36.1,-80.3,1
+6/20/18,Lac du Bonnet,MB,50.3,-96.1,1
+6/20/18,Potlatch,ID,46.9,-117,1
+6/20/18,Saint Joseph,MO,39.8,-94.8,1
+6/20/18,Cranston,RI,41.8,-71.4,1
+6/20/18,Wellsboro,PA,41.7,-77.3,1
+6/21/18,Charter Township of Clinton,MI,42.6,-83,1
+6/21/18,Chelsea,QC,45.5,-75.8,1
+6/21/18,Trumbull,CT,41.2,-73.2,1
+6/21/18,Walla Walla,WA,46,-118.3,1
+6/21/18,Thornton,CO,39.9,-104.9,1
+6/21/18,Ripley,ON,44.1,-81.6,1
+6/21/18,North Haledon,NJ,41,-74.2,1
+6/21/18,Pomona,NY,41.2,-74.1,1
+6/22/18,East Meadow,NY,40.7,-73.6,1
+6/22/18,Eau Claire,WI,44.8,-91.5,1
+6/22/18,Syracuse,NY,43,-76.2,1
+6/22/18,Palmer,MA,42.2,-72.3,1
+6/22/18,Portland,OR,45.6,-122.7,1
+6/22/18,Bend,OR,44.1,-121.2,1
+6/22/18,Wichita,KS,37.7,-97.3,3
+6/22/18,Westwood,MA,42.2,-71.2,1
+6/22/18,Mount Holly,VT,43.4,-72.8,1
+6/23/18,Grayslake,IL,42.3,-88,1
+6/23/18,Calumet Township,MI,47.2,-88.4,1
+6/23/18,Maple Plain,MN,45,-93.6,2
+6/23/18,Minneapolis,MN,45,-93.3,1
+6/23/18,Franktown,CO,39.3,-104.7,3
+6/23/18,Munster,IN,41.6,-87.5,1
+6/23/18,Touchet,WA,46,-118.7,1
+6/23/18,Fox River Grove,IL,42.2,-88.2,1
+6/24/18,Morrisburg,ON,44.9,-75.2,1
+6/24/18,Fremont,OH,41.4,-83.1,1
+6/24/18,Wilkes-Barre,PA,41.3,-75.8,1
+6/24/18,Emmaus,PA,40.5,-75.5,1
+6/24/18,Charleston,WV,38.3,-81.6,1
+6/24/18,Middletown,MD,39.4,-77.6,1
+6/24/18,State College,PA,40.9,-77.8,1
+6/24/18,Tinley Park,IL,41.6,-87.8,3
+6/24/18,West Chester,PA,40,-75.6,1
+6/24/18,Odessa,SK,50.4,-103.7,1
+6/25/18,Washington,DC,38.9,-77,1
+6/25/18,Setauket- East Setauket,NY,40.9,-73.1,1
+6/25/18,Webster,MA,42,-71.9,1
+6/25/18,Sunbury,PA,40.9,-76.7,1
+6/25/18,Chesapeake City,MD,39.5,-75.9,1
+6/25/18,Stafford Township,NJ,39.7,-74.3,1
+6/25/18,Lakeville,NY,42.8,-77.7,1
+6/25/18,Riegelsville,PA,40.6,-75.2,1
+6/25/18,Decatur,IN,40.8,-84.9,6
+6/25/18,Orillia,ON,44.6,-79.4,3
+6/25/18,Eastham,MA,41.9,-70,1
+6/25/18,Blaine,MN,45.2,-93.2,1
+6/25/18,Harrisburg,PA,40.3,-76.9,1
+6/25/18,Deptford Township,NJ,39.8,-75.1,1
+6/25/18,Bowmanville,ON,43.9,-78.7,1
+6/25/18,Fort Wayne,IN,41.1,-85.1,1
+6/25/18,Centre Hall,PA,40.8,-77.7,1
+6/25/18,BrÃ©beuf,QC,46.1,-74.6,1
+6/25/18,Stoughton,MA,42.1,-71.1,1
+6/26/18,Snyder,CO,40.3,-103.6,1
+6/26/18,Bridport,VT,44,-73.3,1
+6/26/18,Halifax,PA,40.5,-76.9,1
+6/26/18,Alliance,OH,40.9,-81.1,1
+6/26/18,Virginia,MN,47.5,-92.5,2
+6/26/18,Harwinton,CT,41.8,-73.1,1
+6/26/18,Fox River Grove,IL,42.2,-88.2,1
+6/26/18,Fairlawn,OH,41.1,-81.6,1
+6/26/18,Searsport,ME,44.5,-68.9,1
+6/27/18,Plano,TX,33.1,-96.7,1
+6/27/18,Burke,VA,38.8,-77.3,1
+6/27/18,Silver Spring,MD,39.1,-77,1
+6/27/18,West Middleton,IN,40.4,-86.2,1
+6/27/18,Somerset,MA,41.8,-71.1,1
+6/27/18,Grosse Pointe Woods,MI,42.4,-82.9,1
+6/27/18,Benicia,CA,38,-122.2,1
+6/27/18,Thunder Bay,ON,48.5,-89.2,1
+6/27/18,Escondido,CA,33.1,-117.1,6
+6/28/18,Midwest City,OK,35.4,-97.4,2
+6/28/18,Maumee,OH,41.6,-83.6,1
+6/28/18,Fredericksburg,VA,38.3,-77.4,1
+6/28/18,Augusta,MI,42.3,-85.4,1
+6/28/18,Toronto,ON,43.7,-79.3,1
+6/28/18,Overland Park,KS,38.9,-94.6,1
+6/28/18,Coshocton,OH,40.3,-81.9,1
+6/28/18,Merrillan,WI,44.4,-90.9,6
+6/28/18,Plymouth,WI,43.8,-88,1
+6/28/18,Indianapolis,IN,39.9,-86.3,1
+6/28/18,Ajax,ON,43.9,-79,1
+6/28/18,Pennsylvania Furnace,PA,40.7,-77.9,1
+6/29/18,Roxbury,CT,41.6,-73.3,1
+6/29/18,Buffalo Grove,IL,42.2,-87.9,1
+6/29/18,Bemidji,MN,47.5,-94.8,1
+6/29/18,Uniontown,PA,39.9,-79.7,1
+6/29/18,Cambridge,NS,45.1,-64.6,1
+6/29/18,Landisburg,PA,40.3,-77.3,1
+6/29/18,Lancaster,PA,40.1,-76.4,1
+6/29/18,Holland,MA,42.1,-72.2,2
+6/29/18,North Hampton,NH,43,-70.8,2
+6/29/18,Yukon,PA,40.2,-79.7,1
+6/29/18,Salem,MA,42.5,-70.9,1
+6/30/18,Nottingham,PA,39.8,-76.1,1
+6/30/18,Sea Cliff,NY,40.8,-73.6,1
+6/30/18,Sterling,NY,43.4,-76.7,4
+6/30/18,Buffalo,NY,43,-78.8,1
+6/30/18,Corvallis,OR,44.6,-123.3,1
+6/30/18,Granby,CT,42,-72.8,1
+6/30/18,Whitmore Lake,MI,42.4,-83.8,1
+6/30/18,Mechanicsburg,PA,40.2,-77,1
+6/30/18,Meridian,PA,40.9,-79.9,1
+6/30/18,Bloomingdale,NY,44.4,-74.1,1
+6/30/18,Blackstock,ON,44.1,-78.8,1
+6/30/18,Eagle Bay,NY,43.8,-74.9,1
+6/30/18,Newton,MA,42.4,-71.2,1
+6/30/18,Avon Lake,OH,41.5,-82,1
+6/30/18,Woodstock,ON,43.1,-80.7,1
