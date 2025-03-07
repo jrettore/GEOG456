@@ -1,0 +1,143 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Monarch Butterly Sightings</title>
+</head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monarch Sightings</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="monarch_sightings.js"></script>
+    <style>
+        body { background-color: blanchedalmond; }
+        #mapid { width: 100%; max-width: 1500px; height: 500px; }
+        .info {
+            padding: 8px;
+            background: blanchedalmond;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        h1{
+            font-family: "Comic Sans MS", "Comic Sans", cursive; 
+        }
+        h2{
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+        h3{
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            text-align: left;
+        }
+ 
+    </style>
+</head>
+<body>
+    <h1>First Adult Monarch Butterfly Sightings</h1>
+    <h2>Contiguous United States & Canada, June 2018</h2>
+    <h3 id="daYear">Date</h3>
+    <input id="dateSlider" type="range" name="Date" min="1" max="407" class="slider" oninput="moveSlider(this.value)">
+    
+    <div id="mapid"></div>
+
+    <div id="infoBox" class="info">
+        <table id="table">
+            <tr>
+                <th>Location</th>
+                <th>State</th>
+                <th>Date</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var map = L.map('mapid').setView([40, -99], 4.2); 
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var LeafIcon = L.Icon.extend({
+            options: {
+                iconSize:     [80, 48],
+                iconAnchor:   [40, 22],
+            }
+        })
+
+        var orangeIcon = new LeafIcon({iconUrl: 'monarch.png'})
+
+        function updateMap(sliderValue) {
+            map.eachLayer(function(layer) {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            var filtered = {
+                type: "FeatureCollection",
+                features: monarch.features.slice(0, sliderValue)
+            };
+
+            L.geoJson(filtered, {
+                pointToLayer: function(feature, latlng) { 
+                    var marker = L.marker(latlng, { icon: orangeIcon }).addTo(map);
+
+                    marker.on('mouseover', function() {
+                        addInformation(feature.properties);
+                    });
+
+                    return marker;
+                }
+            }).addTo(map);
+
+            var output = document.getElementById("daYear");
+            output.innerHTML = monarch.features[sliderValue - 1].properties.date;
+        }
+
+        window.onload = updateMap(1);
+       
+        function moveSlider(value) { 
+            updateMap(value); 
+        }
+
+        function addInformation(properties) {
+            var table = document.getElementById('table');
+
+            table.innerHTML = `
+                <tr>
+                    <th>Location</th>
+                    <th>State</th>
+                    <th>Date</th>
+                </tr>`;
+
+            var newRow = table.insertRow();
+            newRow.insertCell(0).innerHTML = properties.location;
+            newRow.insertCell(1).innerHTML = properties.state;
+            newRow.insertCell(2).innerHTML = properties.date;
+        }
+    </script>
+
+    <h3>Jonah Ettore
+        Data Source: <a href="https://www.journeynorth.org/" title="Journey North">Journey North</a>
+        Image Source: <a href="https://www.pngall.com/" title="PNG All">PNG All</a>
+    </h3>
+
+<body>    
+</body>
+</html>
+**Help received from Abby and Corey**
