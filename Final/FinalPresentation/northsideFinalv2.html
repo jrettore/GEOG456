@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="northside.js"></script>
-  <script src="northside_zone_4326.js"></script>
 
   <style>
     body {
@@ -132,7 +131,7 @@
     0.016137,0.015157,0.015362,0.016053,0.016529
   ];
 
-  // set choropleth values & colors
+  // set choropleth values & colors - W3 Schools
   function getColor(taxBill) {
     return taxBill > 10000 ? '#800026' :
            taxBill > 7500  ? '#BD0026' :
@@ -155,12 +154,12 @@
     };
   }
 
-  function display() {
+  function display() { // updates visualization
     var year = parseInt(yearslider.value);
     allParcels.clearLayers();
     HBOLayer.clearLayers();
 
-    for (let i = 0; i < northside.features.length; i++) {
+    for (let i = 0; i < northside.features.length; i++) { // changes features into useable variables
       var feature = northside.features[i];
       var value = feature.taxValue[year - 2000];
       var taxBill = value * taxRates[year - 2000];
@@ -207,7 +206,7 @@
     }
   }
 
-// create play button slider
+// create play button slider - DeepSeek
   playButton.onclick = () => {
     if (isPlaying) {
       clearInterval(playInterval);
@@ -229,7 +228,7 @@
     isPlaying = !isPlaying;
   };
 
-// create legend
+// create legend - W3 Schools
   var legend = L.control({position: 'bottomright'});
   legend.onAdd = function () {
     var div = L.DomUtil.create('div', 'legend'),
@@ -246,7 +245,7 @@
   };
   legend.addTo(northsideMap);
 
-// layer controls
+// layer controls - W3 Schools
   var baseLayers = {};
   var overlays = {
     "All Parcels": allParcels,
@@ -261,7 +260,7 @@
       "Historically Black-Owned (as of selected year)": HBOLayer
     };
 };
-
+// updates the visualization
   display();
 </script>
 
