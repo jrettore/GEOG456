@@ -1,0 +1,203 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northside Property Taxes</title>
+</head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northside</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="northside_zone_4326.js"></script>
+    <script src="ttlv_complete.js"></script>
+    <style>
+        body { background-color: blanchedalmond; }
+        #mapid { width: 100%; max-width: 1500px; height: 500px; }
+        .info {
+            padding: 8px;
+            background: blanchedalmond;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        h2{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        h3{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: left;
+            border: 1px solid black;
+        }
+        .legend {
+            line-height: 18px;
+            color: #555;
+            border: 1px solid black;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+            border: 1px solid black;
+        }
+ 
+    </style>
+</head>
+<body>
+    <h1>Northside Neighborhood Total Taxable Land Value 2011-2023</h1>
+    <h2>Chapel Hill, North Carolina</h2>
+    <input type="range" value="2011" min='2011' max='2014' class="slider" oninput="move(this.value)">
+    <div id="mapid"></div>
+
+    <script>
+        function move(value){
+            console.log(value)
+        }
+
+        var myYear = 2011
+        move(2011)
+        var map = L.map('mapid').setView([35.915109, -79.063510], 16); 
+        
+        var tiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', { // add basemap
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+
+        var style2 = { // styling Northside zoning boundary
+            "fillColor": "#000000",
+            "weight": 5,
+            "opacity": 0.50
+        };
+
+        L.geoJson(northsideZone4326, { // adding Northside zoning boundary
+            style: style2
+        }).addTo(map);
+
+        function getColor(d) { // set category colors
+    return d > 170000 ? '#800026' :
+           d > 120000  ? '#BD0026' :
+           d > 89000  ? '#E31A1C' :
+           d > 68000  ? '#FC4E2A' :
+           d > 48000   ? '#FD8D3C' :
+           d > 5000   ? '#FEB24C' :
+           d > 0   ? '#FED976' :
+                      '#FFEDA0';
+        }
+        function style(feature) { // styling choropleth
+    return {
+        fillColor: getColor(feature.properties.ttlv_change),
+        weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '2',
+        fillOpacity: 0.7
+        };
+    }
+
+L.geoJson(ttlv_complete, {style: style}).addTo(map); // add choropleth to map
+
+        function highlightFeature(e) { 
+            info.update(e.target.feature.properties);
+            // highlight on mouseover event
+        console.log(e.target.feature.properties
+        )
+        var layer = e.target;
+        layer.setStyle({
+        weight: 5,
+        color: 'lightblue',
+        dashArray: '2',
+        fillOpacity: 0.7
+    });
+
+    layer.bringToFront();
+}
+ 
+        function resetHighlight(e) { // remove highlight
+        geojson.resetStyle(e.target);
+        info.update();
+}
+        var geojson;
+        geojson = L.geoJson(ttlv_complete);   
+
+        function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+}
+        function onEachFeature(feature, layer) {
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+    });
+}
+
+        geojson = L.geoJson(ttlv_complete, {
+        style: style,
+        onEachFeature: onEachFeature
+    }).addTo(map);
+
+        var info = L.control();
+
+        info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+
+        this.update();
+        return this._div;
+};
+
+        info.update = function (props) {
+        this._div.innerHTML = '<h4>Change in Total Taxable Land Value</h4>' +
+        (props ?
+            '<b>' + props.ttlv_change + ' USD</b><br />' +
+            'Address: ' + props.StreetAddressUnofficial + '<br />' +
+            'Parcel ID: ' + props.PIN + '<br />' +
+            'Year Built: ' + props.YearBlt
+            : 'Hover over a parcel');
+};
+
+        info.addTo(map);
+
+        var legend = L.control({position: 'bottomright'}); //create legend
+
+        legend.onAdd = function (map) {
+
+        var div = L.DomUtil.create('div', 'info legend'),
+        ttlv_change = [0, 5000, 48000, 68000, 89000, 120000, 170000],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < ttlv_change.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(ttlv_change[i] + 1) + '"></i> ' +
+            ttlv_change[i] + (ttlv_change[i + 1] ? '&ndash;' + ttlv_change[i + 1] + '<br>' : '+');
+    }
+
+        return div;
+};
+
+        legend.addTo(map);
+
+    </script>
+    <h3>Jonah Ettore</h3>
+
+<body>    
+</body>
+</html>

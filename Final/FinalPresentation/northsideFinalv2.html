@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Northside Taxes</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="northside.js"></script>
+  <script src="northside_zone_4326.js"></script>
+
+  <style>
+    body {
+      background-color: lightblue;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h1 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h2 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h3 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h4 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h5 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    #map {
+      height: 550px;
+      width: 100%;
+    }
+    .slider-container {
+      margin: 10px 0;
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slider {
+      width: 550px;
+    }
+    .tick-container {
+      display: flex;
+      justify-content: space-between;
+      width: 550px;
+      padding-left: 10px;
+      font-size: 12px;
+      color: #555;
+    }
+    .legend {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      line-height: 18px;
+      color: black;
+      background: lightblue;
+      padding: 6px 8px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+    .info {
+      padding: 6px 8px;
+      background: white;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    button {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: white;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+<h1>Northside Neighborhood Taxes 2003-2024</h1>
+<h2>Chapel Hill, North Carolina</h2>
+
+<div class="slider-container">
+  <button id="togglePlay">▶ Play</button>
+  <input type="range" min="2003" max="2024" value="2003" class="slider" id="yearSlider" oninput="display()">
+</div>
+<div class="tick-container">
+  <span>2003</span><span>2012</span><span>2024</span>
+</div>
+
+<div id="map"></div>
+
+<script>
+  var northsideMap = L.map('map').setView([35.915496, -79.063821], 16);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(northsideMap);
+
+
+
+  var allParcels = L.layerGroup().addTo(northsideMap);
+  var HBOLayer = L.layerGroup();
+
+  var yearslider = document.getElementById('yearSlider');
+  var playButton = document.getElementById('togglePlay');
+  var isPlaying = false;
+  var playInterval;
+
+  // set tax rates for 2003-2024
+  var taxRates = [
+    0,0,0,0.01598,0.01655,0.015484,0.016135,0.016755,
+    0.01809,0.015404,0.015404,0.015404,0.015404,0.015804,
+    0.016104,0.016104,0.016104,0.015475,0.015802,0.016137,
+    0.016137,0.015157,0.015362,0.016053,0.016529
+  ];
+
+  // set choropleth values & colors
+  function getColor(taxBill) {
+    return taxBill > 10000 ? '#800026' :
+           taxBill > 7500  ? '#BD0026' :
+           taxBill > 5000  ? '#E31A1C' :
+           taxBill > 2500  ? '#FC4E2A' :
+           taxBill > 1000  ? '#FD8D3C' :
+           taxBill > 500   ? '#FEB24C' :
+           taxBill > 100   ? '#FED976' :
+                             '#FFEDA0';
+  }
+
+  function styleFeature(taxBill) {
+    return {
+      fillColor: getColor(taxBill),
+      weight: 1,
+      opacity: 1,
+      color: 'lightblue',
+      dashArray: '3',
+      fillOpacity: 0.7
+    };
+  }
+
+  function display() {
+    var year = parseInt(yearslider.value);
+    allParcels.clearLayers();
+    HBOLayer.clearLayers();
+
+    for (let i = 0; i < northside.features.length; i++) {
+      var feature = northside.features[i];
+      var value = feature.taxValue[year - 2000];
+      var taxBill = value * taxRates[year - 2000];
+      var formattedBill = taxBill.toFixed(2);
+
+      var popupContent = `
+        <b>Tax Bill: </b>$${formattedBill || 'N/A'}<br>
+        <b>Parcel ID:</b> ${feature.PIN || 'N/A'}<br>
+      `;
+
+      var polygon = L.polygon(feature.coords, styleFeature(taxBill))
+        .bindPopup(popupContent)
+        .on('mouseover', function (e) {
+          this.openPopup();
+          info.update(feature);
+        })
+        .on('mouseout', function (e) {
+          this.closePopup();
+          info.update();
+        });
+
+      allParcels.addLayer(polygon);
+
+      if (feature.lastHBO >= year) {
+        var HBOPolygon = L.polygon(feature.coords, {
+          ...styleFeature(taxBill),
+          fillColor: 'lightgreen',
+          color: 'forestgreen',
+          weight: 1,
+          fillOpacity: 0.7
+        })
+        .bindPopup(popupContent + `<b>Historically Black-Owned Parcel</b>`)
+        .on('mouseover', function (e) {
+          this.openPopup();
+          info.update(feature);
+        })
+        .on('mouseout', function (e) {
+          this.closePopup();
+          info.update();
+        });
+
+        HBOLayer.addLayer(HBOPolygon);
+      }
+    }
+  }
+
+// create play button slider
+  playButton.onclick = () => {
+    if (isPlaying) {
+      clearInterval(playInterval);
+      playButton.textContent = '▶ Play';
+    } else {
+      playInterval = setInterval(() => {
+        let currentYear = parseInt(yearslider.value);
+        if (currentYear >= 2024) {
+          clearInterval(playInterval);
+          playButton.textContent = '▶ Play';
+          isPlaying = false;
+          return;
+        }
+        yearslider.value = currentYear + 1;
+        display();
+      }, 1000);
+      playButton.textContent = '⏸ Pause';
+    }
+    isPlaying = !isPlaying;
+  };
+
+// create legend
+  var legend = L.control({position: 'bottomright'});
+  legend.onAdd = function () {
+    var div = L.DomUtil.create('div', 'legend'),
+        grades = [0, 100, 500, 1000, 2500, 5000, 7500, 10000];
+
+    div.innerHTML += '<b>Tax Bill ($)</b><br>';
+    for (var i = 0; i < grades.length; i++) {
+      div.innerHTML +=
+        '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+    div.innerHTML += '<i style="background:lightgreen"></i> Historically Black-Owned<br>';
+    return div;
+  };
+  legend.addTo(northsideMap);
+
+// layer controls
+  var baseLayers = {};
+  var overlays = {
+    "All Parcels": allParcels,
+    "Historically Black-Owned (as of selected year)": HBOLayer
+  };
+  var layerscontrol = L.control.layers(baseLayers, overlays).addTo(northsideMap);
+
+    function change_legend() {
+    layerscontrol.removeFrom(northsideMap);
+    overlays = {
+      "All Parcels": allParcels,
+      "Historically Black-Owned (as of selected year)": HBOLayer
+    };
+};
+
+  display();
+</script>
+
+<h4>Jonah Ettore</h4>
+<h5>Source: <a href="https://github.com/registerchilton/Geography456/blob/main/northside.js" title="Northside Tax Data">Northside Tax Data</a></h5>
+<h5>Acknowledgments: This work would not be possible without the support of Mark Chilton, the Orange County Register of Deeds.</h5>
+<h5>AI Use Statement: Artificial Intelligence was used for general debugging and the creation of some functions and formatting. All other code was handwritten.</h5>
+
+</body>
+</html>
+
+

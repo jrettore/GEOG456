@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Northside Property Taxes</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="northside_zone_4326.js"></script>
+  <script src="ttlv_complete.js"></script>
+  <style>
+    body { background-color: blanchedalmond; }
+    #mapid { width: 100%; max-width: 1500px; height: 500px; }
+    .info {
+      padding: 8px;
+      background: blanchedalmond;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    h1, h2, h3 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .legend {
+      line-height: 18px;
+      color: #555;
+      border: 1px solid black;
+      padding: 6px;
+      background: white;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+      border: 1px solid black;
+    }
+    .slider-container {
+      margin: 15px 0;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Northside Neighborhood Total Taxable Land Value 2011–2023</h1>
+  <h2>Chapel Hill, North Carolina</h2>
+
+  <div class="slider-container">
+    <label>Year: <span id="yearDisplay">2011</span></label>
+    <input type="range" id="yearSlider" min="2011" max="2023" value="2011" step="1">
+  </div>
+
+  <div id="mapid"></div>
+
+  <h3>Jonah Ettore</h3>
+
+  <script>
+    let currentYear = 2011;
+    let choroplethLayer;
+
+    var map = L.map('mapid').setView([35.915109, -79.063510], 16);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.geoJson(northsideZone4326, {
+      style: { fillColor: "#000000", weight: 5, opacity: 0.5 }
+    }).addTo(map);
+
+    var getColor = (d) =>
+      d > 170000 ? '#800026' :
+      d > 120000 ? '#BD0026' :
+      d > 89000 ? '#E31A1C' :
+      d > 68000 ? '#FC4E2A' :
+      d > 48000 ? '#FD8D3C' :
+      d > 5000 ? '#FEB24C' :
+      d > 0 ? '#FED976' :
+      '#FFEDA0';
+
+    var style = (feature) => ({
+      fillColor: getColor(feature.properties[`ttlv_change_complete_ttlv${currentYear}`] || 0),
+      weight: 2,
+      opacity: 1,
+      color: 'black',
+      dashArray: '2',
+      fillOpacity: 0.7
+    });
+
+    var info = L.control();
+
+    info.onAdd = function () {
+      this._div = L.DomUtil.create('div', 'info');
+      this.update();
+      return this._div;
+    };
+
+    info.update = function (props) {
+      this._div.innerHTML = `<h4>Change in Total Taxable Land Value (${currentYear})</h4>` +
+        (props ?
+          `<b>${props[`ttlv_change_complete_ttlv${currentYear}`] || 0} USD</b><br />
+          Address: ${props.StreetAddressUnofficial}<br />
+          Parcel ID: ${props.PIN}<br />
+          Year Built: ${props.YearBlt}`
+        : 'Hover over a parcel');
+    };
+
+    info.addTo(map);
+
+    var highlightFeature = (e) => {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 5,
+        color: 'lightblue',
+        dashArray: '2',
+        fillOpacity: 0.7
+      });
+      layer.bringToFront();
+      info.update(layer.feature.properties);
+    };
+
+    var resetHighlight = (e) => {
+      choroplethLayer.resetStyle(e.target);
+      info.update();
+    };
+
+    var zoomToFeature = (e) => {
+      map.fitBounds(e.target.getBounds());
+    };
+
+    var onEachFeature = (feature, layer) => {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+      });
+    };
+
+    var createLayer = () => {
+      choroplethLayer = L.geoJson(ttlv_complete, {
+        style: style,
+        onEachFeature: onEachFeature
+      }).addTo(map);
+    };
+
+    var updateYear = (year) => {
+      currentYear = year;
+      document.getElementById("yearDisplay").textContent = year;
+
+      choroplethLayer.eachLayer((layer) => {
+        var newStyle = style(layer.feature);
+        layer.setStyle(newStyle);
+      });
+
+      info.update(); // Clear the info box
+    };
+
+    // Legend
+    var legend = L.control({ position: 'bottomright' });
+
+    legend.onAdd = function () {
+      var div = L.DomUtil.create('div', 'info legend');
+      var grades = [0, 5000, 48000, 68000, 89000, 120000, 170000];
+
+      for (let i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          `<i style="background:${getColor(grades[i] + 1)}"></i> ` +
+          grades[i] + (grades[i + 1] ? `–${grades[i + 1]}<br>` : '+');
+      }
+      return div;
+    };
+
+    legend.addTo(map);
+
+    // Slider listener
+    document.getElementById("yearSlider").addEventListener('input', (e) => {
+      updateYear(e.target.value);
+    });
+
+    // Initialize map with 2011 data
+    createLayer();
+    updateYear(2011);
+  </script>
+</body>
+</html>
