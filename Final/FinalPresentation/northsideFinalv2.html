@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Northside Taxes</title>
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="northside.js"></script>
@@ -39,7 +38,7 @@
       font-size: 12px;
       color: #555;
     }
-    .legend { 
+    .legend {
       font-family: Georgia, 'Times New Roman', Times, serif;
       line-height: 18px;
       color: black;
@@ -87,13 +86,12 @@
 <h2>Chapel Hill, North Carolina</h2>
 
 <div class="slider-container">
+  <h2 id="daYear">The year is 2003.</h2>
   <button id="togglePlay">▶ Play</button>
   <input type="range" min="2003" max="2024" value="2003" class="slider" id="yearSlider" oninput="display()">
 </div>
+
 <div class="tick-container">
-  <span style="color:black;font-weight:bold;font-size:large;margin-left:65px">2003</span>
-  <span style="color:black;font-weight:bold;font-size:large;margin-left:25px">2012</span>
-  <span style="color:black;font-weight:bold;font-size:large;margin-right:-10px;">2024</span>
 </div>
 
 <div id="map"></div>
@@ -114,7 +112,6 @@
   var isPlaying = false;
   var playInterval;
 
-  // set tax rates for 2003-2024
   var taxRates = [
     0,0,0,0.01598,0.01655,0.015484,0.016135,0.016755,
     0.01809,0.015404,0.015404,0.015404,0.015404,0.015804,
@@ -122,7 +119,6 @@
     0.016137,0.015157,0.015362,0.016053,0.016529
   ];
 
-  // set choropleth values & colors - W3 Schools
   function getColor(taxBill) {
     return taxBill > 10000 ? '#800026' :
            taxBill > 7500  ? '#BD0026' :
@@ -145,17 +141,17 @@
     };
   }
 
-  function display() { // updates visualization
+  function display() {
     var year = parseInt(yearslider.value);
+    document.getElementById("daYear").textContent = "The year is " + year + ".";
     allParcels.clearLayers();
     HBOLayer.clearLayers();
 
-    for (let i = 0; i < northside.features.length; i++) { // changes features into useable variables
+    for (let i = 0; i < northside.features.length; i++) {
       var feature = northside.features[i];
       var value = feature.taxValue[year - 2000];
       var taxBill = value * taxRates[year - 2000];
       var formattedBill = taxBill.toFixed(2);
-
 
       var popupContent = `
         <b>Tax Bill: </b>$${formattedBill || 'N/A'}<br>
@@ -164,13 +160,13 @@
 
       var polygon = L.polygon(feature.coords, styleFeature(taxBill))
         .bindPopup(popupContent)
-        .on('mouseover', function (e) {
+        .on('mouseover', function () {
           this.openPopup();
-          info.update(feature);
+          if (typeof info !== 'undefined') info.update(feature);
         })
-        .on('mouseout', function (e) {
+        .on('mouseout', function () {
           this.closePopup();
-          info.update();
+          if (typeof info !== 'undefined') info.update();
         });
 
       allParcels.addLayer(polygon);
@@ -184,13 +180,13 @@
           fillOpacity: 0.1
         })
         .bindPopup(popupContent + `<b>Historically Black-Owned Parcel</b>`)
-        .on('mouseover', function (e) {
+        .on('mouseover', function () {
           this.openPopup();
-          info.update(feature);
+          if (typeof info !== 'undefined') info.update(feature);
         })
-        .on('mouseout', function (e) {
+        .on('mouseout', function () {
           this.closePopup();
-          info.update();
+          if (typeof info !== 'undefined') info.update();
         });
 
         HBOLayer.addLayer(HBOPolygon);
@@ -198,7 +194,6 @@
     }
   }
 
-  // create play button slider - DeepSeek
   playButton.onclick = () => {
     if (isPlaying) {
       clearInterval(playInterval);
@@ -220,7 +215,6 @@
     isPlaying = !isPlaying;
   };
 
-  // create legend - W3 Schools
   var legend = L.control({position: 'bottomright'});
   legend.onAdd = function () {
     var div = L.DomUtil.create('div', 'legend'),
@@ -237,23 +231,12 @@
   };
   legend.addTo(northsideMap);
 
-  // layer controls - W3 Schools
-  var baseLayers = {};
   var overlays = {
-    "All Parcels": allParcels,
+    "Tax Bill": allParcels,
     "Historically Black-Owned (as of selected year)": HBOLayer
   };
-  var layerscontrol = L.control.layers(baseLayers, overlays).addTo(northsideMap);
+  L.control.layers({}, overlays).addTo(northsideMap);
 
-  function change_legend() {
-    layerscontrol.removeFrom(northsideMap);
-    overlays = {
-      "All Parcels": allParcels,
-      "Historically Black-Owned (as of selected year)": HBOLayer
-    };
-  };
-
-  // updates the visualization
   display();
 </script>
 
@@ -264,5 +247,8 @@
 
 </body>
 </html>
+
+
+
 
 
