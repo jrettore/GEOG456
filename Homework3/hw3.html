@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union County Fire Stations</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+</head>
+<body>
+    <h1>Fire Stations</h1>
+    <h2>Union County, North Carolina, 2019</h2>
+    <div id="map"></div>
+    <style>
+    body{
+    background-color: salmon;
+    }
+    #map{
+    width: 900px; height: 500px;
+    }
+    h1, h2, h3, h4, h5 {
+    color: rgb(255,51,51);
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    text-shadow: 2px 0 #ffad00, -2px 0 #ffad00, 0 2px #ffad00, 0 -2px #ffad00,
+    1px 1px #ffad00, -1px -1px #ffad00, 1px -1px #ffad00, -1px 1px #ffad00;
+    }
+    </style>
+<script>
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { // code from leafletjs.com
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+});
+var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+});
+var panIcon = L.icon({
+    iconUrl: './firestation.png',   
+    iconSize: [50,50],
+    popupAnchor: [0,0]
+});
+var allens = L.marker([34.91136481, -80.40707662], {icon: panIcon}).bindPopup('Allens Crossroads Volunteer Fire Department, Inc.'),
+    bakers = L.marker([35.03592563, -80.6272502], {icon: panIcon}).bindPopup('Bakers Volunteer Fire and Rescue Department, Inc.'),
+    beaver = L.marker([34.9886758, -80.36408542], {icon: panIcon}).bindPopup('Beaver Lane Volunteer Rescue & Fire Department, Inc.'),
+    fairview = L.marker([35.13585084, -80.53719271], {icon: panIcon}).bindPopup('Fairview Fire & Rescue Association'),
+    griffith = L.marker([34.92382368, -80.5596699], {icon: panIcon}).bindPopup('Griffith Road Volunteer Fire Department, Inc.'),
+    hemby = L.marker([35.11583, -80.6194], {icon: panIcon}).bindPopup('Hemby Bridge Volunteer Fire Department, Inc.'),
+    jackson = L.marker([34.864, -80.695], {icon: panIcon}).bindPopup('Jackson Community Volunteer Fire and Rescue, Inc.'),
+    lanes = L.marker([34.83875597, -80.43143522], {icon: panIcon}).bindPopup('Lanes Creek Volunteer Fire Department, Inc.'),
+    mineral = L.marker([34.93931197, -80.66737838], {icon: panIcon}).bindPopup('Mineral Springs Volunteer Fire and Rescue Department, Inc.'),
+    monroe = L.marker([34.9841792, -80.55155708], {icon: panIcon}).bindPopup('Monroe Fire Department'),
+    salem = L.marker([35.13237716, -80.37043825000001], {icon: panIcon}).bindPopup('New Salem Volunteer Fire Department, Inc'),
+    sandy = L.marker([34.87463105, -80.58529464], {icon: panIcon}).bindPopup('Sandy Ridge Fire and Rescue Department, Inc.');
+
+var stations = L.layerGroup([allens, bakers, beaver, fairview, griffith, hemby, jackson, lanes, mineral, monroe, salem, sandy]);
+var map = L.map('map', {
+    center: [34.987620, -80.549525],
+    zoom: 10,
+    layers: [osm, stations]
+});
+var baseMaps = {
+    "OpenStreetMap": osm,
+    "OpenStreetMap.HOT": osmHOT
+};
+var overlayMaps = {
+    "Fire Stations": stations
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+</script>
+
+<h4>Jonah Ettore</h4>
+<h5>Source: <a href="https://www.nconemap.gov/datasets/6f4fe0c55b0d4cbb92877e461d698c29_0/explore?location=35.017309%2C-79.881626%2C7.23&showTable=true" title="NC OneMap">NC OneMap</a></h5>
+</body>
+</html>
